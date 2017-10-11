@@ -4,7 +4,7 @@ Movie Manager Exercise is a MEAN web application built with a custom responsive 
 
 MongoDB, ExpressJS, [AngularJS](https://angularjs.org/), NodeJS
 
-Demo: http://moviemanager.musto.io
+Demo: http://moviemanager.musto.io:8080
 
 Notes: [DEVELOPMENTNOTES.MD](docs/DEVELOPMENTNOTES.MD)
 
