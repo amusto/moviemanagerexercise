@@ -1,14 +1,6 @@
 'use strict';
 
-angular.module('mmApp.main', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/main', {
-    templateUrl: 'controllers/main.template.html',
-    controller: 'mainCtrl'
-  });
-}])
-
-.controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('myApp').controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
+  console.log("Hello, I'm in the Main ctrl");
 
 }]);

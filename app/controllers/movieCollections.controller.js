@@ -1,14 +1,6 @@
 'use strict';
 
-angular.module('mmApp.movieCollections', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/movieCollections', {
-    templateUrl: 'controllers/movieCollections.template.html',
-    controller: 'movieCollectionsCtrl'
-  });
-}])
-
-.controller('movieCollectionsCtrl', [function() {
+angular.module('myApp').controller('movieCollectionsCtrl', ['$scope', '$http', function($scope, $http) {
+    console.log("Hello, I'm in the movieCollections ctrl");
 
 }]);

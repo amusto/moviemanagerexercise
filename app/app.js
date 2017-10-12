@@ -1,18 +1,37 @@
 'use strict';
 
+//TODO: Consider a requireAll approach for dependencies
+/*function requireAll(r) {
+    r.keys().forEach(r);
+}*/
+
 // Declare app level module which depends on views, and components
-angular.module('mmApp', [
-    'ngRoute',
-    'mmApp.main',
-    'mmApp.movieCollections'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-    $locationProvider.hashPrefix('!');
+var myApp = angular.module('myApp', ['ui.router']);
 
-    $routeProvider.otherwise({redirectTo: '/main'});
-}])
+myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    //$locationProvider.hashPrefix('!');
 
-.controller('homepageCtrl', ['$scope', function($scope) {
+    $urlRouterProvider.otherwise('/main');
+
+    $stateProvider
+
+        .state('main', {
+            url: '/main',
+            controller: 'mainCtrl',
+            templateUrl: 'templates/main.template.html'
+        })
+
+        .state('movieCollections', {
+            url: '/movieCollections',
+            controller: 'movieCollectionsCtrl',
+            templateUrl: '/templates/movieCollections.template.html'
+        })
+
+}]);
+
+myApp.controller('homepageCtrl', ['$scope', function($scope) {
     $scope.siteTitle = "Armandos Movie Manager";
+
+    console.log($scope.siteTitle);
 
 }]);
