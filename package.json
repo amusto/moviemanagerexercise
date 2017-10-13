@@ -28,11 +28,13 @@
     "angular-ui-bootstrap": "^2.5.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta",
+    "config": "^1.26.2",
     "cookie-parser": "^1.4.3",
     "error-handler": "^1.0.0",
     "express": "^4.16.2",
     "jquery": "^3.2.1",
     "method-override": "^2.3.10",
+    "mongoose": "^4.12.1",
     "morgan": "^1.9.0",
     "path": "^0.12.7",
     "popper.js": "1.12.5"

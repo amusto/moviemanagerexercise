@@ -1,0 +1,19 @@
+{
+    "server": { // Node server
+        "env": "development",
+        "host": "localhost",
+        "port": 8080
+    },
+    "db": { // DB Config not currently being used
+        "host": "localhost",
+        "port": "27017",
+        "table": "movieManager"
+    },
+    "directories": {
+        reports: "database/reports/"
+    },
+    "tmdbAPI": { // Credentials for TMDB API
+        "url": "https://api.themoviedb.org/3/search/movie?api_key=",
+        "api_key": "28487f78ee09a45ef3ca72bdf4957ccd"
+    }
+}
