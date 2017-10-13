@@ -1,0 +1,41 @@
+<div class=".container-fluid">
+    <!-- Content here -->
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-sm-6">
+            <h2>Search TMDB API</h2>
+        </div>
+        <div class="col-sm-6 text-right align-bottom">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm col-md">
+
+            <form ng-submit="submit()">
+                <div class="form-group">
+                    <label for="searchForMovieName">Search for Movie Name</label>
+                    <input type="text" class="form-control" id="searchForMovieName" placeholder="Enter movie to search" ng-model="searchFor.movieName" autofocus>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" ng-disabled="searchFor.movieName.length <= 5" class="btn btn-primary" ng-click="searchAPI()">Search API</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="row" ng-if="searchResults.page > 0">
+        <div class="col-sm col-md">
+            <span><strong>({{searchResults.total_results}}) Search Results</strong></span>
+            <div flex ng-repeat="result in searchResults.results" style="margin-bottom: 10px;">
+                ID: {{result.id}}, title: {{result.title}}<br>
+                {{result.overview}}
+            </div>
+
+        </div>
+    </div>
+
+</div>

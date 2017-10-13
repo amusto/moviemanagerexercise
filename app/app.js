@@ -32,6 +32,12 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
             templateUrl: '/templates/editMovieCollection.template.html'
         })
 
+        .state('searchAPI', {
+            url: '/searchAPI',
+            controller: 'searchAPICtrl',
+            templateUrl: '/templates/searchAPI.template.html'
+        })
+
 }]);
 
 myApp.controller('homepageCtrl', ['$scope', function($scope) {
