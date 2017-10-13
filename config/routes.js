@@ -1,9 +1,14 @@
 const config = require('config'),
 HOST = config.get('server.host'),
+DATABASE = config.get('db.table'),
 PORT = config.get('server.port'),
 ENV = config.get('server.env');
+
+//TODO: Move to service
+var mongoose = require('mongoose');
+var dbConnectString = "mongodb://" + HOST + "/" + DATABASE;
+mongoose.connect(dbConnectString);
 console.log('Loading Routes');
-console.log('ENV:' + ENV);
 
 module.exports = function (app) {
 
