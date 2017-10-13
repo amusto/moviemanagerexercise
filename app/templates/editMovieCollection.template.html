@@ -6,38 +6,11 @@
             <h2>Movie Collections</h2>
         </div>
         <div class="col-sm-6 text-right align-bottom">
-            <a ui-sref="addCollection">Add a Collection</a>
-        </div>
-    </div>
-
-    <div class="row" ng-show="!showHideAddCollection">
-        <div class="col-sm col-md">
-
-            <table class="table table-hover table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>Collection</th>
-                    <th>Genre</th>
-                    <th>#Movies</th>
-                    <th width="100" align="center">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tr ng-repeat="collection in movieCollections.data">
-                    <td><a ui-sref="editCollection({ id: 0 })">{{ collection.name }}</a></td>
-                    <td>{{ collection.genre }}</td>
-                    <td>{{ collection.numOfMovies }}</td>
-                    <td nowrap><a ui-sref="editCollection">edit</a> | <a href="" ng-click="deleteCollection($index)">delete</a></td>
-                </tr>
-
-                </tbody>
-            </table>
 
         </div>
     </div>
 
-    <div class="row" ng-show="showHideAddCollection">
+    <div class="row">
         <div class="col-sm col-md">
 
             <form>

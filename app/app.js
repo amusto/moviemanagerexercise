@@ -1,16 +1,9 @@
 'use strict';
 
-//TODO: Consider a requireAll approach for dependencies
-/*function requireAll(r) {
-    r.keys().forEach(r);
-}*/
-
 // Declare app level module which depends on views, and components
-var myApp = angular.module('myApp', ['ui.router']);
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngTouch']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    //$locationProvider.hashPrefix('!');
-
     $urlRouterProvider.otherwise('/main');
 
     $stateProvider
@@ -25,6 +18,18 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
             url: '/movieCollections',
             controller: 'movieCollectionsCtrl',
             templateUrl: '/templates/movieCollections.template.html'
+        })
+
+        .state('addCollection', {
+            url: '/addCollection',
+            controller: 'addMovieCollectionCtrl',
+            templateUrl: '/templates/addMovieCollection.template.html'
+        })
+
+        .state('editCollection', {
+            url: '/editCollection',
+            controller: 'editMovieCollectionCtrl',
+            templateUrl: '/templates/editMovieCollection.template.html'
         })
 
 }]);
