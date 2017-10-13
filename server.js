@@ -29,21 +29,3 @@ app.use(express.static(__dirname + '/app'));
 app.use('/node_modules', express.static('./node_modules'));
 
 require('./config/routes.js')(app);
-
-// catch 404 and forward to error handler
-/*app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-if (app.get(env === 'development')) {
-    app.listen(3000, function () {
-        console.log('Example listening on port 3000!');
-    });
-} else{
-    app.listen(8080, function () {
-        console.log('Example listening on port 8080!');
-    });
-}*/
-
-module.exports = app;
