@@ -11,10 +11,9 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 method: 'GET',
                 url: apiUrl
             }).then(function successCallback(response) {
-                //INFO: We only need to return data here.
                 defer.resolve(response.data);
             }, function errorCallback(response) {
-                defer.reject(err);
+                defer.reject(response);
             });
 
             return defer.promise;
@@ -32,7 +31,7 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
-                defer.reject(err);
+                defer.reject(response);
             });
 
             return defer.promise;
@@ -50,7 +49,7 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
-                defer.reject(err);
+                defer.reject(response);
             });
 
             return defer.promise;
@@ -67,7 +66,7 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
             }).then(function successCallback(response) {
                 defer.resolve(response.data);
             }, function errorCallback(response) {
-                defer.reject(err);
+                defer.reject(response);
             });
 
             return defer.promise;
@@ -84,7 +83,7 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
-                defer.reject(err);
+                defer.reject(response);
             });
 
             return defer.promise;
