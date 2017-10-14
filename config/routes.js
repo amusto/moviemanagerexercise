@@ -4,30 +4,98 @@ DATABASE = config.get('db.table'),
 PORT = config.get('server.port'),
 ENV = config.get('server.env');
 
-//TODO: Move to service
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var Collection = require('./models/collection');
+
 var dbConnectString = "mongodb://" + HOST + "/" + DATABASE;
-//mongoose.connect(dbConnectString);
+mongoose.connect(dbConnectString, {
+    useMongoClient: true
+    /* other options */
+});
 console.log('Loading Routes');
 
 module.exports = function (app) {
 
     //COLLECTION ROUTES
-    app.post('/createCollection', function (req, res, next) {
-        var text = req.body.text;
+    app.post('/api/createCollection', function (req, res, next) {
+        var tempCollection = req.body;
 
-        MovieManagerController.createCollection(text).then(function (collection) {
+        // create a new collection
+        var newCollection = new Collection({
+            name: tempCollection.name,
+            movies: [],
+            created_at: Date.now(),
+            updated_at: Date.now()
+        });
+
+        //Call models save function
+        //TODO: revise with a promise and resolve final returnedStatus object
+        newCollection.save(function(err) {
+            //if (err) throw err;
+            if (err) {
+                var returnStatus = {
+                    status: "error",
+                    message: err.message
+                };
+                res.json(returnStatus);
+            } else {
+                var returnStatus = {
+                    status: "success",
+                    message: "Collection Saved Successfully!"
+                };
+                res.json(returnStatus);
+            }
+
+        });
+
+    });
+
+    app.post('/api/updateCollection', function (req, res, next) {
+        var collection = req.body;
+
+        Collection.findByIdAndUpdate(collection._id, collection, function (err) {
+            if (err) throw err;
+
+            console.log('Collection updated!');
+            res.json({
+                status: 'collectionUpdated'
+            });
+        });
+    });
+
+    app.get('/api/collections', function (req, res, next) {
+        //Get All Collections
+        Collection.find({}, function(err, collections) {
+            if (err) throw err;
+
+            // object of all the collections
+            res.json(collections);
+        });
+
+    });
+
+    app.get('/api/collection/:collectionId', function (req, res, next) {
+        var collectionId = req.params.collectionId;
+
+        Collection.findById(collectionId, function(err, collection) {
+            if (err) throw err;
+
+            // object of all the collections
             res.json(collection);
         });
 
     });
 
-    app.get('/collections', function (req, res, next) {
-        console.log("Get all collections");
-        var userId = "amusto"; //TODO: temp till userAuth is setup
+    app.post('/api/collection/:collectionId', function (req, res, next) {
+        var collectionId = req.params.collectionId;
 
-        MovieManagerController.getCollectionsForUser(userId).then(function (collections) {
-            res.json(collections);
+        Collection.findById(collectionId, function(err, collection) {
+            if (err) throw err;
+
+            // object of all the collections
+            res.json(collection);
         });
 
     });

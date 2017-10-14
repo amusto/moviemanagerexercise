@@ -1,19 +1,20 @@
 'use strict';
 
-angular.module('myApp').controller('addMovieCollectionCtrl', ['$scope', '$http', function($scope, $http) {
+angular.module('myApp').controller('addMovieCollectionCtrl', ['$scope', '$sce', 'CollectionService', '$state', function($scope, $sce, CollectionService, $state) {
     //TODO: collectionService
-
-    $scope.collectionGenres = ['Comedy', 'Action', 'Drama', 'Documentary'];
-
     $scope.collection = {
-        name: '',
-        genre: $scope.collectionGenres[0]
+        name: ''
     };
-    console.log($scope.collection);
 
     $scope.createCollection = function() {
-        console.log($scope.collection);
+        CollectionService.createCollection($scope.collection).then(function(response) {
+            console.log(response);
+            if (response.status  === 'success') {
+                $state.go('movieCollections');
+            } else {
+                console.log(createCollection);
+            }
+        });
     };
 
-    console.log('AddMovieController');
 }]);

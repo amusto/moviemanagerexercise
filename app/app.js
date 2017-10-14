@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngTouch']);
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngTouch']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
@@ -17,6 +17,13 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
         .state('movieCollections', {
             url: '/movieCollections',
             controller: 'movieCollectionsCtrl',
+            resolve: {
+                movieCollections: function (CollectionService) {
+                    return CollectionService.getCollections().then(function(data) {
+                        return data;
+                    });
+                }
+            },
             templateUrl: '/templates/movieCollections.template.html'
         })
 
@@ -27,7 +34,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
         })
 
         .state('editCollection', {
-            url: '/editCollection',
+            url: '/editCollection/:collectionID',
             controller: 'editMovieCollectionCtrl',
             templateUrl: '/templates/editMovieCollection.template.html'
         })
@@ -42,7 +49,5 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
 
 myApp.controller('homepageCtrl', ['$scope', function($scope) {
     $scope.siteTitle = "Armandos Movie Manager";
-
-    console.log($scope.siteTitle);
 
 }]);

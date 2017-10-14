@@ -34,6 +34,6 @@ angular.module('myApp').controller('searchAPICtrl', ['$scope', '$http', function
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
-
     };
+
 }]);

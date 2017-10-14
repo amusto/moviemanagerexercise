@@ -17,18 +17,20 @@
                 <thead>
                 <tr>
                     <th>Collection</th>
-                    <th>Genre</th>
+                    <th>Created</th>
                     <th>#Movies</th>
-                    <th width="100" align="center">Actions</th>
+                    <th width="100" align="center"></th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr ng-repeat="collection in movieCollections.data">
-                    <td><a ui-sref="editCollection({ id: 0 })">{{ collection.name }}</a></td>
-                    <td>{{ collection.genre }}</td>
-                    <td>{{ collection.numOfMovies }}</td>
-                    <td nowrap><a ui-sref="editCollection">edit</a> | <a href="" ng-click="deleteCollection($index)">delete</a></td>
+                <tr ng-repeat="collection in movieCollections">
+                    <td><a ui-sref="editCollection({ collectionID: collection._id })">{{ collection.name }}</a></td>
+                    <td>{{ collection.created_at | date:medium }}</td>
+                    <td>{{ collection.movies.length }}</td>
+                    <td nowrap align="center"><a href="" ng-click="deleteCollection(collection._id)">
+                        <img class="glyph-icon" src="/assets/img/svg/si-glyph-trash.svg"/>
+                    </a></td>
                 </tr>
 
                 </tbody>
