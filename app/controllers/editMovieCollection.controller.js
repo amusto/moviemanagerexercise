@@ -59,15 +59,11 @@ angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'Collec
             $scope.collection.movies.push($scope.newMovie);
             $scope.updateCollection();
             $scope.displayRowAddMovie();
-            /*MovieService.createMovie($scope.newMovie).then(function(data) {
-            });*/
 
         } else {
             console.log('Invalid Form');
             $scope.invalidForm = invalidForm($scope.newMovie);
         }
-
-        console.log($scope.collection);
 
     };
 

@@ -8,8 +8,6 @@ bodyParser = require('body-parser'),
 errorHandler = require('error-handler'),
 mongoose = require('mongoose'),
 morgan = require('morgan'),
-/*routes = require('./routes'),
-api = require('./routes/api'),*/
 http = require('http'),
 config = require('config');
 

@@ -59,7 +59,6 @@ module.exports = function (app) {
         Collection.findByIdAndUpdate(collection._id, collection, function (err) {
             if (err) throw err;
 
-            console.log('Collection updated!');
             res.json({
                 status: 'collectionUpdated'
             });
@@ -71,8 +70,6 @@ module.exports = function (app) {
 
         Collection.findByIdAndRemove(collectionId, function(err) {
             if (err) throw err;
-
-            console.log('Collection deleted!');
             res.json({
                 status: 'collectionDeleted'
             });

@@ -28,7 +28,6 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 url: apiUrl,
                 data: collection
             }).then(function successCallback(response) {
-                console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
                 defer.reject(response);
@@ -46,7 +45,6 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 url: apiUrl,
                 data: collection
             }).then(function successCallback(response) {
-                console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
                 defer.reject(response);
@@ -80,7 +78,6 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
                 method: 'DELETE',
                 url: apiUrl
             }).then(function successCallback(response) {
-                console.log(response);
                 defer.resolve(response.data);
             }, function errorCallback(response) {
                 defer.reject(response);
@@ -88,24 +85,6 @@ angular.module('myApp').service('CollectionService', ['$http', '$q', '$filter', 
 
             return defer.promise;
         }
-
-        /*'deleteCollection': function(collectionId) {
-            var defer = $q.defer();
-            var apiUrl = "/api/deleteCollection";
-            console.log(collectionId);
-
-            $http({
-                method: 'POST',
-                url: apiUrl
-            }).then(function successCallback(response) {
-                console.log(response);
-                defer.resolve(response.data);
-            }, function errorCallback(response) {
-                defer.reject(response);
-            });
-
-            return defer.promise;
-        }*/
 
 }}]);
 
