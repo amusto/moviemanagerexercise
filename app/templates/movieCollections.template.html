@@ -17,7 +17,7 @@
                 <thead>
                 <tr>
                     <th>Collection</th>
-                    <th>Created</th>
+                    <th class="d-none d-md-block">Created</th>
                     <th>#Movies</th>
                     <th width="100" align="center"></th>
                 </tr>
@@ -26,7 +26,7 @@
 
                 <tr ng-repeat="collection in movieCollections">
                     <td><a ui-sref="editCollection({ collectionID: collection._id })">{{ collection.name }}</a></td>
-                    <td>{{ collection.created_at | date:medium }}</td>
+                    <td class="d-none d-md-block">{{ collection.created_at | date:medium }}</td>
                     <td>{{ collection.movies.length }}</td>
                     <td nowrap align="center"><a href="" ng-click="deleteCollection(collection._id)">
                         <img class="glyph-icon" src="/assets/img/svg/si-glyph-trash.svg"/>

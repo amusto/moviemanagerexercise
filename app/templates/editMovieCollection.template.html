@@ -87,13 +87,19 @@
             <thead>
             <tr>
                 <th st-sort="title">Title</th>
-                <th st-sort="format">Format</th>
+                <th st-sort="format">Year</th>
+                <th st-sort="format" class="d-none d-md-block">Format</th>
+                <th st-sort="format" class="d-none d-md-block">Length</th>
+                <th st-sort="format" class="d-none d-md-block">Rating</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="movie in collection.movies">
                 <td>{{movie.title | uppercase}}</td>
-                <td>{{movie.format}}</td>
+                <td>{{movie.releaseYear}}</td>
+                <td class="d-none d-md-block">{{movie.format}}</td>
+                <td class="d-none d-md-block">{{movie.length}}</td>
+                <td class="d-none d-md-block">{{movie.rating}}</td>
             </tr>
             </tbody>
         </table>
