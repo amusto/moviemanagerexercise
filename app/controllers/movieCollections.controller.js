@@ -12,7 +12,6 @@ angular.module('myApp').controller('movieCollectionsCtrl', ['$scope', 'movieColl
     };
 
     $scope.deleteCollection = function(collectionId) {
-        console.log(collectionId);
         CollectionService.deleteCollection(collectionId).then(function(response) {
             $scope.getCollections();
         });

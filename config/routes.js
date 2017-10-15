@@ -7,8 +7,7 @@ ENV = config.get('server.env');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Collection = require('./models/collection'),
-Movie = require('./models/movie');;
+var Collection = require('./models/collection');
 
 var dbConnectString = "mongodb://" + HOST + "/" + DATABASE;
 mongoose.connect(dbConnectString, {

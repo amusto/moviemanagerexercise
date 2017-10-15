@@ -12,16 +12,13 @@ angular.module('myApp').controller('searchAPICtrl', ['$scope', '$http', function
     };
 
     function encodeSearchText(searchText) {
-        console.log(searchText);
         var results = encodeURI(searchText);
-        console.log(results);
         return results;
     }
 
     $scope.searchAPI = function() {
         var searchURL = "https://api.themoviedb.org/3/search/movie?api_key=" + api_key + "&query=";
         searchURL += encodeSearchText($scope.searchFor.movieName);
-        console.log('SearchURL' + searchURL);
 
         //TODO: Move to a service
         $http({
@@ -29,10 +26,7 @@ angular.module('myApp').controller('searchAPICtrl', ['$scope', '$http', function
             url: searchURL
         }).then(function successCallback(response) {
             $scope.searchResults = response.data;
-            console.log($scope.searchResults);
         }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
         });
     };
 

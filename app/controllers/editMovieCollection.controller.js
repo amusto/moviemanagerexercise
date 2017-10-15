@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'CollectionService', 'MovieService', '$stateParams', function($scope, CollectionService, MovieService, $stateParams) {
+angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'CollectionService', '$stateParams', function($scope, CollectionService, $stateParams) {
     $scope.collectionId = $stateParams.collectionID;
     $scope.collection = {};
     $scope.newMovie = {
@@ -48,23 +48,18 @@ angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'Collec
         }
 
         return formInvalid;
-    };
+    }
 
     $scope.addNewMovie = function() {
-        console.log($scope.newMovie);
-
         if(invalidForm($scope.newMovie) === false) {
-            console.log('create movie');
             $scope.invalidForm = invalidForm($scope.newMovie);
             $scope.collection.movies.push($scope.newMovie);
+            console.log($scope.collection.movies);
             $scope.updateCollection();
             $scope.displayRowAddMovie();
-
         } else {
-            console.log('Invalid Form');
             $scope.invalidForm = invalidForm($scope.newMovie);
         }
-
     };
 
 }])
@@ -80,5 +75,3 @@ angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'Collec
         return input;
     };
 });
-
-;
