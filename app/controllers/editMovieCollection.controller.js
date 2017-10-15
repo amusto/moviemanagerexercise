@@ -54,7 +54,6 @@ angular.module('myApp').controller('editMovieCollectionCtrl', ['$scope', 'Collec
         if(invalidForm($scope.newMovie) === false) {
             $scope.invalidForm = invalidForm($scope.newMovie);
             $scope.collection.movies.push($scope.newMovie);
-            console.log($scope.collection.movies);
             $scope.updateCollection();
             $scope.displayRowAddMovie();
         } else {
