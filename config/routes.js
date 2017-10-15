@@ -7,7 +7,8 @@ ENV = config.get('server.env');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Collection = require('./models/collection');
+var Collection = require('./models/collection'),
+Movie = require('./models/movie');;
 
 var dbConnectString = "mongodb://" + HOST + "/" + DATABASE;
 mongoose.connect(dbConnectString, {
@@ -65,6 +66,20 @@ module.exports = function (app) {
         });
     });
 
+    app.delete('/api/deleteCollection/:id', function (req, res) {
+        var collectionId = req.params.id;
+
+        Collection.findByIdAndRemove(collectionId, function(err) {
+            if (err) throw err;
+
+            console.log('Collection deleted!');
+            res.json({
+                status: 'collectionDeleted'
+            });
+        });
+
+    });
+
     app.get('/api/collections', function (req, res, next) {
         //Get All Collections
         Collection.find({}, function(err, collections) {
@@ -99,10 +114,6 @@ module.exports = function (app) {
         });
 
     });
-
-    //MOVIE ROUTES
-
-    //USER ROUTES
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

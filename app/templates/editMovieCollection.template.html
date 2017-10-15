@@ -32,27 +32,71 @@
             <strong>Movies in collection</strong>
         </div>
         <div class="col-sm-6 col-md-6 text-right">
-            <a href="" ng-click="addMovie()">Add a Movie</a>
+            <a href="" ng-click="displayRowAddMovie()">Add a Movie</a>
         </div>
     </div>
 
     <div class="row" style="margin-top: 10px;" ng-if="displayAddMovie">
-        <form class="form-inline">
-        <div class="col-sm-12 col-md-12">
-            <label class="mr-sm-2" for="addMovieTitle">Title</label>
-            <input type="text" class="form-control" id="addMovieTitle" placeholder="The Rocky Horror Picture Show" ng-model="addMovie.title" autofocus>
-        </div>
+        <form id="frmAddMovie" name="frmAddMovie" ng-submit="addNewMovie()" style="width:100%" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label for="movieTitle" class="col-form-label">Title</label>
+                    <input type="text" class="form-control" id="movieTitle" placeholder="Title" ng-model="newMovie.title" autofocus maxlength="50" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid title.
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="movieReleaseYear" class="col-form-label">Release Year</label>
+                    <select class="custom-select form-control" ng-model="newMovie.releaseYear" id="movieReleaseYear" required>
+                        <option value="0" selected>Choose Year</option>
+                        <option ng-repeat="y in [] | range:2019:1800">{{y}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="movieFormat" class="col-form-label">Format</label>
+                    <select class="custom-select form-control" ng-model="newMovie.format" id="movieFormat">
+                        <option value="" selected>Choose Format</option>
+                        <option value="{{format}}" ng-repeat="format in movieFormatOptions">{{format}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="movieLength" class="col-form-label">Length</label>
+                    <input type="text" class="form-control" id="movieLength" placeholder="1 hr, 30m" ng-model="newMovie.length">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="movieRating" class="col-form-label">Rating</label>
+                    <div style="margin-left: 20px">
+                        <span style="margin-right: 20px" ng-repeat="rating in movieRatingOptions" id="movieRating">
+                            <input class="form-check-input" type="radio" name="movieRating" ng-model="newMovie.rating" value="{{rating}}" ng-selected="newMovie.rating === rating"> {{rating}}
+                        </span>
+                    </div>
+                </div>
+            </div>
 
-            <!--select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
-                <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+            <div ng-if="invalidForm" style="color: red; margin-bottom: 10px;">All fields are required, please complete form.</div>
 
-            <button type="submit" class="btn btn-primary">Add Movie</button-->
-
+            <button type="submit" class="btn btn-primary">Add Movie</button>
         </form>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <table st-table="rowCollection" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="title">Title</th>
+                <th st-sort="format">Format</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="movie in collection.movies">
+                <td>{{movie.title | uppercase}}</td>
+                <td>{{movie.format}}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

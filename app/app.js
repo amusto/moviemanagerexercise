@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngTouch']);
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngTouch', 'smart-table']);
 
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/main');
@@ -18,7 +18,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
             url: '/movieCollections',
             controller: 'movieCollectionsCtrl',
             resolve: {
-                movieCollections: function (CollectionService) {
+                movieCollectionsData: function (CollectionService) {
                     return CollectionService.getCollections().then(function(data) {
                         return data;
                     });
