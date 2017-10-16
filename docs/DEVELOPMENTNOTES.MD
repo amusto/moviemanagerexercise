@@ -19,6 +19,11 @@ Currently, I am deploying manually by doing a git pull request from the applicat
 
 **PROJECT SCHEDULE**
 
+**Thurs - Sat**
+* Complete all front end routes
+* Complete three states (main, collections, searchAPI)
+* Delivered to client
+
 **Weds Oct 11th**
 * Provided overview on requirements, estimate for completion.
 * Created github repo, added Amy as a collaborator
