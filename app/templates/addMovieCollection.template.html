@@ -1,0 +1,23 @@
+<div class="row" style="margin-top: 10px;">
+    <div class="col-sm-6">
+        <h2>Create a Collection</h2>
+        <span>Create a collection then update it with movies.</span>
+    </div>
+    <div class="col-sm-6 text-right align-bottom"></div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <div class="col-sm col-md">
+
+        <form>
+            <div class="form-group">
+                <label for="collectionName">Name</label>
+                <input type="text" class="form-control" id="collectionName" placeholder="I love comedies!" ng-model="collection.name" autofocus>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" ng-disabled="collection.name.length === 0" ng-click="createCollection()">Create Collection</button>
+            </div>
+        </form>
+
+    </div>
+</div>
