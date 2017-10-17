@@ -1,5 +1,9 @@
-'use strict';
+(function () {
 
-angular.module('myApp').controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
+    'use strict';
 
-}]);
+    angular.module('myApp').controller('mainCtrl', ['$scope', '$http', function($scope, $http) {
+
+    }]);
+
+}());

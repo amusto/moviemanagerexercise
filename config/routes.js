@@ -119,7 +119,7 @@ module.exports = function (app) {
     });
 
     //TODO: Review setup?
-    if (app.get(ENV === 'development')) {
+    /*if (app.get(ENV === 'development')) {
         app.listen(3000, function () {
             console.log('Example listening on port 3000!');
         });
@@ -127,6 +127,6 @@ module.exports = function (app) {
         app.listen(8080, function () {
             console.log('Example listening on port 8080!');
         });
-    }
+    }*/
 
 };

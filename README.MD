@@ -1,4 +1,4 @@
-# Movie Manager Exercise
+# Movie Manager Example (MEAN Application Boilerplate)
 
 Movie Manager Exercise is a MEAN web application built with a custom responsive design demonstrating MVC in the Javascript world.
 
@@ -59,6 +59,14 @@ Configuration (Settings in /config/default.json)
 
 
 ```
+
+### Run locally
+
+```
+You can run the app locally by opening up a terminal window at project root, enter grunt and hit enter
+
+```
+
 
 ## Authors
 
