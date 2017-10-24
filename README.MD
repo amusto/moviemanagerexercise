@@ -12,7 +12,7 @@ Notes: [DEVELOPMENTNOTES.MD](docs/DEVELOPMENTNOTES.MD)
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-Note: I've only setup and tested running locally on my MacOS all though it should easily run on a PC as well. (See startApp.bat)
+**Note: I've only setup and tested running locally on a MacOS all though it should easily run on a PC as well. (See startApp.bat)**
 
 ### Prerequisites
 
