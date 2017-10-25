@@ -16,10 +16,31 @@ mongoose.connect(dbConnectString, {
 });
 console.log('Loading Routes');
 
+function validateCollection(req, res, next) {
+    req.checkBody('name', 'Invalid description').notEmpty();
+    //Validate check for _id
+    //TODO: update to check for all possible params
+    if (req.body._id !== undefined) {
+        req.checkBody('_id', 'Invalid mongoId').notEmpty().isMongoId();
+    }
+
+    var errors = req.validationErrors();
+    if (errors) {
+        var response = { errors: [] };
+        errors.forEach(function(err) {
+            response.errors.push(err.msg);
+        });
+        res.statusCode = 400;
+        return res.json(response);
+    }
+    return next();
+}
+
 module.exports = function (app) {
 
     //COLLECTION ROUTES
-    app.post('/api/createCollection', function (req, res, next) {
+    // Validation is handle via middleware using express-validator
+    app.post('/api/createCollection', validateCollection, function (req, res, next) {
         var tempCollection = req.body;
 
         // create a new collection
@@ -52,7 +73,7 @@ module.exports = function (app) {
 
     });
 
-    app.post('/api/updateCollection', function (req, res, next) {
+    app.post('/api/updateCollection', validateCollection, function (req, res, next) {
         var collection = req.body;
 
         Collection.findByIdAndUpdate(collection._id, collection, function (err) {
@@ -99,7 +120,7 @@ module.exports = function (app) {
 
     });
 
-    app.post('/api/collection/:collectionId', function (req, res, next) {
+    app.post('/api/collection/:collectionId', validateCollection, function (req, res, next) {
         var collectionId = req.params.collectionId;
 
         Collection.findById(collectionId, function(err, collection) {
@@ -117,16 +138,5 @@ module.exports = function (app) {
         err.status = 404;
         next(err);
     });
-
-    //TODO: Review setup?
-    /*if (app.get(ENV === 'development')) {
-        app.listen(3000, function () {
-            console.log('Example listening on port 3000!');
-        });
-    } else{
-        app.listen(8080, function () {
-            console.log('Example listening on port 8080!');
-        });
-    }*/
 
 };

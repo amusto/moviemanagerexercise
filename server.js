@@ -6,6 +6,7 @@
         logger = require('morgan'),
         cookieParser = require('cookie-parser'),
         bodyParser = require('body-parser'),
+        expressValidator = require('express-validator'),
         errorHandler = require('error-handler'),
         mongoose = require('mongoose'),
         morgan = require('morgan'),
@@ -23,6 +24,7 @@
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(expressValidator());
     app.use(cookieParser());
     //app.use(express.static(__dirname + '/app'));
     app.use(express.static(__dirname + '/dist')); //Works but commented it out while working on it
